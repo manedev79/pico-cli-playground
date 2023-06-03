@@ -1,18 +1,14 @@
 package io.github.manedev79;
 
-import java.io.IOException;
+import io.github.manedev79.command.GithubCommand;
+import picocli.CommandLine;
 
 public class App {
 
-    public static void main(String[] args) throws IOException {
-        var website = args[0];
-        System.out.printf("Opening website: %s%n", website);
-
-        openInBrowser(website);
+    public static void main(String[] args) {
+        int exitCode = new CommandLine(new GithubCommand()).execute(args);
+        System.exit(exitCode);
     }
 
-    private static void openInBrowser(String website) throws IOException {
-        Runtime runtime = Runtime.getRuntime();
-        runtime.exec("xdg-open %s".formatted(website));
-    }
+
 }
