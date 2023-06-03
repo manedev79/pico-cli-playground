@@ -14,7 +14,7 @@ public class GithubCommand implements Callable<Integer> {
     @Parameters(index = "0", description = "Website to open")
     private String website;
 
-    private NativeShellExecutor nativeShellExecutor;
+    private final NativeShellExecutor nativeShellExecutor;
 
     public GithubCommand() {
         this.nativeShellExecutor = new NativeShellExecutor();
